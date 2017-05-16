@@ -14,7 +14,8 @@
     <script>
         $(function () {
             $('map').imageMapResize();
-            $("#hand").hover(function () {
+            $("#hand").click(function () {
+                $(this).toggle(500);
                 var position = $(this).attr('coords').split(',');
                 x = +position[0];
                 y = +position[1];
