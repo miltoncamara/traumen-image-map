@@ -41,7 +41,7 @@
     <map name="Map" id="Map">
             <area id="hand" style="background-color: red;" title="Hand" href="#" shape="poly" coords="366,446,357,436,338,438,334,450,322,458,316,468,335,502,350,509,387,482,396,459" />
     </map>
-    <div id="point-blink" class="inner">
+    <div id="point-blink" class="inner" style="cursor:pointer;">
     </div>
     <a href="http://traumesolutions.com.br/pt/home/" target="_blank">
         <img src="./logo_traume.png" id="logo-traumen" style="display:none;">
@@ -63,14 +63,12 @@
                 left: y - 33 + "px"
             });            
             
-            $("#hand").click(function () {
-                $(this).toggle(500);
-                
+            $("#point-blink").click(function () {
                 $("#logo-traumen").css({
                     position: "absolute",
                     top: x + 20 + "px",
                     left: y + "px"
-                }).toggle(500);
+                }).show(500);
             });
         });
     </script>
