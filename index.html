@@ -1,0 +1,31 @@
+<html>
+
+<head></head>
+
+<body>
+    <img src="boneco.png" alt="Mr Solutions" usemap="#Map" height="400">
+    <map name="Map" id="Map">
+            <area id="hand" style="background-color: red;" title="Hand" href="#" shape="poly" coords="366,446,357,436,338,438,334,450,322,458,316,468,335,502,350,509,387,482,396,459" />
+    </map>
+    <img src="./logo_traume.png" id="logo-traumen" style="display:none;">
+    <script src="./bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="./scripts/imageMapResizer.min.js"></script>
+    <script>
+        $(function () {
+            $('map').imageMapResize();
+            $("#hand").hover(function () {
+                var position = $(this).attr('coords').split(',');
+                x = +position[0];
+                y = +position[1];                
+                console.log(position);
+                $("#logo-traumen").css({
+                    position: "absolute",
+                    top: x + 20 + "px",
+                    left: y + "px"
+                }).toggle(500);
+            });
+        });
+    </script>
+</body>
+
+</html>
