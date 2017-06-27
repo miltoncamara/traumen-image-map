@@ -13,15 +13,32 @@
                 box-shadow: 0 0 8px red, inset 0 0 8px red;
             }
         }
+
+        .centered {
+            display: table;
+            margin: 0 auto;
+        }        
         
-        .inner {
+        .img-store
+        {
+            width: 150px;
+        }
+        .point {
+            background-image: url('img/button.png');
+            background-size: 30px 30px;
+            background-repeat: no-repeat;            
+            width: 30px;
+            height: 30px;
+        }
+        
+        /*.inner {
             background-color: transparent;
             width: 10px;
             height: 10px;
             border-radius: 50px;
             box-shadow: 0 0 8px #ea4c89, inset 0 0 8px #ea4c89;
             -webkit-animation: pulse 2s linear 1s infinite;
-        }
+        }*/
         
         /*.inner p {
             display: block;
@@ -37,37 +54,89 @@
 </head>
 
 <body>
-    <img src="boneco.png" alt="Mr Solutions" usemap="#Map" height="400">
-    <map name="Map" id="Map">
-            <area id="hand" style="background-color: red;" title="Hand" href="#" shape="poly" coords="366,446,357,436,338,438,334,450,322,458,316,468,335,502,350,509,387,482,396,459" />
-    </map>
-    <div id="point-blink" class="inner" style="cursor:pointer;">
+    <div>
+        <img src="img/boneco.png" id="img-toy" class="centered" alt="Mr Solutions" height="600">
+        <map name="Map" id="Map">
+                <area id="hand" style="background-color: red;" title="Hand" href="#" shape="poly" coords="366,446,357,436,338,438,334,450,322,458,316,468,335,502,350,509,387,482,396,459" />
+        </map>
+        <div id="point-libus-helmet" data-image="libus-helmet.png" data-item-x="20" data-item-y="0" class="point inner" style="cursor:pointer;"></div>
+        <div id="point-libus-ear" data-image="libus-ear.png" data-item-x="-150" data-item-y="0" class="point inner" style="cursor:pointer;"></div>
+        <div id="point-libus-head" data-image="libus-helmet.png" data-item-x="-150" data-item-y="0" class="point inner" style="cursor:pointer;"></div>
+        <div id="point-libus-eye" data-image="libus-eyes.png" data-item-x="20" data-item-y="0" class="point inner" style="cursor:pointer;"></div>
+        <div id="point-danny" data-image="danny.png" data-image="danny.png" data-item-x="30" data-item-y="0" class="point inner" style="cursor:pointer;"></div>
+        <div id="point-yeling" data-image="yeling.png" data-item-x="-150" data-item-y="10" class="point inner" style="cursor:pointer;"></div>
+        <div id="point-idol" data-image="idol.png" data-item-x="20" data-item-y="0" class="point inner" style="cursor:pointer;"></div>
+        <a href="http://traumesolutions.com.br/pt/home/" target="_blank">
+            <img id="logo-store" class="img-store"  style="display:none;">
+        </a>
     </div>
-    <a href="http://traumesolutions.com.br/pt/home/" target="_blank">
-        <img src="./logo_traume.png" id="logo-traumen" style="display:none;">
-    </a>
     <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
         crossorigin="anonymous"></script>
     <script src="scripts/imageMapResizer.js"></script>
     <script>
         $(function () {
-            $('map').imageMapResize();
+            // $('map').imageMapResize();
 
-            var position =  $("#hand").attr('coords').split(',');
-            x = +position[0];
-            y = +position[1];            
+            // var position =  $("#hand").attr('coords').split(',');
+            // x = +position[0];
+            // y = +position[1];
 
-            $("#point-blink").css({
+            var toyY = $("#img-toy").offset().top;
+            var toyX = $("#img-toy").offset().left;
+
+            $("#point-danny").css({
                 position: "absolute",
-                top: x + 47 + "px",
-                left: y - 33 + "px"
-            });            
+                top: toyY + 325 + "px",
+                left: toyX + 200 + "px"
+            });
+
+            $("#point-yeling").css({
+                position: "absolute",
+                top: toyY + 325 + "px",
+                left: toyX + 50 + "px"
+            }); 
+
+            $("#point-idol").css({
+                position: "absolute",
+                top: toyY + 550 + "px",
+                left: toyX + 190 + "px"
+            }); 
+
+            $("#point-libus-eye").css({
+                position: "absolute",
+                top: toyY + 130 + "px",
+                left: toyX + 165 + "px"
+            }); 
+
+            $("#point-libus-head").css({
+                position: "absolute",
+                top: toyY + 100 + "px",
+                left: toyX + 100 + "px"
+            }); 
+
+            $("#point-libus-ear").css({
+                position: "absolute",
+                top: toyY + 160 + "px",
+                left: toyX + 70 + "px"
+            }); 
+
+            $("#point-libus-helmet").css({
+                position: "absolute",
+                top: toyY + 30 + "px",
+                left: toyX + 160 + "px"
+            });                                                                                    
             
-            $("#point-blink").click(function () {
-                $("#logo-traumen").css({
+            $(".point").click(function () {
+                var posPointY = $(this).offset().top;
+                var posPointX = $(this).offset().left;
+                var posX = $(this).data('item-x');
+                var posY = $(this).data('item-y');
+                var image = $(this).data('image');
+                $("#logo-store").attr('src', 'img/' + image);
+                $("#logo-store").css({
                     position: "absolute",
-                    top: x + 20 + "px",
-                    left: y + "px"
+                    top: posPointY + posY + "px",
+                    left: posPointX + posX + "px"
                 }).show(500);
             });
         });
