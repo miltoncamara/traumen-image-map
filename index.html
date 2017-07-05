@@ -59,14 +59,14 @@
         <map name="Map" id="Map">
                 <area id="hand" style="background-color: red;" title="Hand" href="#" shape="poly" coords="366,446,357,436,338,438,334,450,322,458,316,468,335,502,350,509,387,482,396,459" />
         </map>
-        <div id="point-libus-helmet" data-image="libus-helmet.png" data-item-x="20" data-item-y="0" class="point inner" style="cursor:pointer;"></div>
-        <div id="point-libus-ear" data-image="libus-ear.png" data-item-x="-150" data-item-y="0" class="point inner" style="cursor:pointer;"></div>
-        <div id="point-libus-head" data-image="libus-helmet.png" data-item-x="-150" data-item-y="0" class="point inner" style="cursor:pointer;"></div>
-        <div id="point-libus-eye" data-image="libus-eyes.png" data-item-x="20" data-item-y="0" class="point inner" style="cursor:pointer;"></div>
-        <div id="point-danny" data-image="danny.png" data-image="danny.png" data-item-x="30" data-item-y="0" class="point inner" style="cursor:pointer;"></div>
-        <div id="point-yeling" data-image="yeling.png" data-item-x="-150" data-item-y="10" class="point inner" style="cursor:pointer;"></div>
-        <div id="point-idol" data-image="idol.png" data-item-x="20" data-item-y="0" class="point inner" style="cursor:pointer;"></div>
-        <a href="http://traumesolutions.com.br/pt/home/" target="_blank">
+        <div id="point-libus-helmet" data-url="URL DO SITE" data-image="libus-helmet.png" data-item-x="20" data-item-y="0" class="point inner" style="cursor:pointer;"></div>
+        <div id="point-libus-ear" data-url="URL DO SITE" data-image="libus-ear.png" data-item-x="-150" data-item-y="0" class="point inner" style="cursor:pointer;"></div>
+        <div id="point-libus-head" data-url="URL DO SITE" data-image="libus-helmet.png" data-item-x="-150" data-item-y="0" class="point inner" style="cursor:pointer;"></div>
+        <div id="point-libus-eye" data-url="URL DO SITE" data-image="libus-eyes.png" data-item-x="20" data-item-y="0" class="point inner" style="cursor:pointer;"></div>
+        <div id="point-danny" data-url="URL DO SITE" data-image="danny.png" data-image="danny.png" data-item-x="30" data-item-y="0" class="point inner" style="cursor:pointer;"></div>
+        <div id="point-yeling" data-url="URL DO SITE" data-image="yeling.png" data-item-x="-150" data-item-y="10" class="point inner" style="cursor:pointer;"></div>
+        <div id="point-idol" data-url="URL DO SITE" data-image="idol.png" data-item-x="20" data-item-y="0" class="point inner" style="cursor:pointer;"></div>
+        <a href="#" target="_blank">
             <img id="logo-store" class="img-store"  style="display:none;">
         </a>
     </div>
@@ -132,11 +132,13 @@
                 var posX = $(this).data('item-x');
                 var posY = $(this).data('item-y');
                 var image = $(this).data('image');
+                var url = $(this).data('url');
                                 
                 $("#logo-store").hide(500, function() {
                     $("#logo-store").attr('src', 'img/' + image);
                     
                     $("#logo-store").one("load", function() {
+                        $("#logo-store").parent('a').attr('href','url');
                         $("#logo-store").css({
                             position: "absolute",
                             top: posPointY + posY + "px",
